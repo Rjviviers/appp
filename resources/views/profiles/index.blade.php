@@ -10,10 +10,12 @@
         <div class="col-9 pt-5">
             <div class="d-flex justify-content-between align-bottom ">
                 <h1>{{ $user->username }}</h1>
-                <a href="#">add new post</a>
+                <a href="/p/create">add new post</a>
+
             </div>
+            <a href="/profile/{{$user->id}}/edit">edit profile</a>
             <div class="d-flex">
-                <div class="pr-5"><strong>150</strong> posts</div>
+                <div class="pr-5"><strong>{{$user->posts->count()}}</strong> posts</div>
                 <div class="pr-5"><strong>500</strong> folowers</div>
                 <div class="pr-5"><strong>5000</strong> folowing</div>
             </div>
@@ -25,9 +27,16 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-4"><img src="https://via.placeholder.com/250" alt="" class="w-100 h-100"></div>
-        <div class="col-4"><img src="https://via.placeholder.com/250" alt="" class="w-100"></div>
-        <div class="col-4"><img src="https://via.placeholder.com/250" alt="" class="w-100"></div>
+
+        @foreach ($user->posts as $post)
+            <div class="col-4 pb-4">
+                <a href="/p/{{$post->id}}">
+                    <img src="/storage/{{ $post->img }}" alt="" class="w-100">
+                </a>
+
+            </div>
+        @endforeach
+
     </div>
 </div>
 @endsection
