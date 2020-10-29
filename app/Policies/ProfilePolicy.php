@@ -9,7 +9,7 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 class ProfilePolicy
 {
     use HandlesAuthorization;
-
+    // php artisan make polocy
     /**
      * Determine whether the user can view any models.
      *
@@ -53,7 +53,7 @@ class ProfilePolicy
      */
     public function update(User $user, Profile $profile)
     {
-        //
+        return $user->id = $profile->user_id;
     }
 
     /**
