@@ -4,16 +4,21 @@
 <div class="container ">
     <div class="row">
         <div class="col-3 p-5">
-            <img height="150" src="https://via.placeholder.com/150" alt=""
+        <img height="150" src="{{ $user->profile->profileImage() }}" alt=""
                 class="rounded-circle">
         </div>
         <div class="col-9 pt-5">
             <div class="d-flex justify-content-between align-bottom ">
                 <h1>{{ $user->username }}</h1>
-                <a href="/p/create">add new post</a>
+                @can('update', $user->profile)
+                    <a href="/p/create">add new post</a>
+                @endcan
+
 
             </div>
-            <a href="/profile/{{$user->id}}/edit">edit profile</a>
+            @can('update', $user->profile)
+                <a href="/profile/{{$user->id}}/edit">edit profile</a>
+            @endcan
             <div class="d-flex">
                 <div class="pr-5"><strong>{{$user->posts->count()}}</strong> posts</div>
                 <div class="pr-5"><strong>500</strong> folowers</div>
@@ -23,7 +28,7 @@
                 <strong>{{ $user->profile->title ?? "need to enter" }}</strong>
             </div>
             <div>{{ $user->profile->description ?? "need to enter" }}</div>
-            <div><a href="#" target="_blank" rel="noopener noreferrer">{{ $user->profile->url ?? "need to enter" }} </a></div>
+            <div><a href="{{ $user->profile->url ?? "#" }}" target="_blank" rel="noopener noreferrer">{{ $user->profile->url ?? "need to enter" }} </a></div>
         </div>
     </div>
     <div class="row">
