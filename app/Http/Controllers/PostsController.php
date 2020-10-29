@@ -22,8 +22,8 @@ class PostsController extends Controller
     public function store()
     {
         $data = request()->validate([
-            'caption'=> 'required',
-            'img'=> 'required|image',
+            'caption' => 'required',
+            'img' => 'required|image',
         ]);
 
         $imagePath = request('img')->store('uploads', 'public');
@@ -39,11 +39,11 @@ class PostsController extends Controller
         ]);
 
 
-        return redirect('/profile/' . auth()->user()->id);
+        return redirect("/profile/" . auth()->user()->id);
     }
     //2 28 23
     public function show(\App\Models\Post $post)
     {
-        return view('posts.show',compact('post'));
+        return view('posts.show', compact('post'));
     }
 }

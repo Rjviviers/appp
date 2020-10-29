@@ -2,18 +2,20 @@
 
 @section('content')
 <div class="container ">
-    <form action="/profile/{{$user->id}}" enctype="multipart/form-data" method="POST">
+    <form action="/profile/{{ $user->id }}" enctype="multipart/form-data" method="post">
         @csrf
         @method('PATCH')
 
         <div class="row">
             <div class="col-8 offset-2">
-
+            <div class="row">
+                <h1>Edit Profile</h1>
+            </div>
 
                 <div class="form-group row">
                     <label for="title" class="col-md-4 col-form-label">title</label>
                     <input id="title" type="text" class="form-control
-                    @error('title') is-invalid @enderror" value="{{ old('title') ?? $user->profile->title }}"
+                    @error('title') is-invalid @enderror" value="{{ old('title') ?? $user->profile->title ?? "" }}"
                     required autocomplete="title" autofocus name="title">
                     @error('title')
                         <span class="invalid-feedback" role="alert">
@@ -25,7 +27,7 @@
                 <div class="form-group row">
                     <label for="description" class="col-md-4 col-form-label">description</label>
                     <input id="description" type="text" class="form-control
-                    @error('description') is-invalid @enderror" value="{{ old('description') ?? $user->profile->description}}"
+                    @error('description') is-invalid @enderror" value="{{ old('description') ?? $user->profile->description ?? "" }}"
                     required autocomplete="description" autofocus name="description">
                     @error('description')
                         <span class="invalid-feedback" role="alert">
@@ -37,8 +39,8 @@
                 <div class="form-group row">
                     <label for="url" class="col-md-4 col-form-label">url</label>
                     <input id="url" type="text" class="form-control
-                    @error('url') is-invalid @enderror" value="{{ old('url') ?? $user->profile->url}}"
-                    required autocomplete="url" autofocus name="url">
+                    @error('url') is-invalid @enderror" value="{{ old('url') ?? $user->profile->url ?? "http://nourl.com"}}"
+                     autocomplete="url" autofocus name="url">
                     @error('url')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -49,7 +51,7 @@
 
                 <div class="row">
                     <label for="img" class="col-md-4 col-form-label">profile picture</label>
-                    <input type="file" required name="img" id="img" class="form-control-file @error('image') is-invalid @enderror" >
+                    <input type="file" name="img" id="img" class="form-control-file @error('image') is-invalid @enderror" >
                     @error('img')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
