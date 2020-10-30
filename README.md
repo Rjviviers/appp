@@ -66,6 +66,17 @@ MAIL_ENCRYPTION=tls
 
 should look somthing like this
 
+## starting the site
+
+```text
+php artisan serve
+```
+
+## making frontend changes (js)
+
+```text
+npm run watch
+```
 
 ### credit
 
