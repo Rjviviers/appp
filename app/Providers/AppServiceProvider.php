@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //fix for pagination making weird oversize
         Paginator::useBootstrap();
     }
 }
