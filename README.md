@@ -78,6 +78,12 @@ php artisan serve
 npm run watch
 ```
 
+## if images dont upload run
+
+```text
+php artisan storage:link
+```
+
 ### credit
 
 [freecodecamp.com](freecodecamp.com)
